@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmacia RARME · WiFi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+
+    <!-- TARJETA PRINCIPAL -->
+    <main class="card">
+
+      <!-- ENCABEZADO -->
+      <header class="brand">
+        <div class="logo-wrap">
+          <img src="img/logo.png" class="logo-img" alt="Farmacia RARME">
+        </div>
+        <h1>Farmacia RARME</h1>
+        <p class="tagline">WiFi de alta velocidad</p>
+      </header>
+
+      <!-- MENSAJE DE ERROR -->
+      <div class="error-msg">$(error)</div>
+
+      <!-- PRUEBA GRATIS -->
+      $(if trial == 'yes')
+      <a class="trial" href="$(link-login-only)?dst=$(link-orig-esc)&username=T-$(mac-esc)">
+        <span class="trial-icon">🚀</span>
+        <span class="trial-text">Prueba gratis 5 minutos</span>
+      </a>
+      $(endif)
+
+      <!-- FORMULARIO PIN -->
+      <form name="login" action="$(link-login-only)" method="post" onSubmit="return doLogin()">
+        <input type="hidden" name="dst" id="dst-input" value="" />
+        <input type="hidden" name="popup" value="true" />
+        <input type="hidden" name="username" value="$(username)" />
+        <input type="hidden" name="password" />
+
+        <div class="pin-group">
+          <label for="pin">PIN de acceso</label>
+          <input
+            type="text"
+            id="pin"
+            class="pin-input"
+            placeholder="Ingresa tu PIN"
+            maxlength="20"
+            autocomplete="off"
+            inputmode="numeric">
+        </div>
+
+        <button type="submit" class="btn-connect">
+          <span>Conectar ahora</span>
+          <svg class="arrow" viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+          </svg>
+        </button>
+      </form>
+
+      <!-- PLANES -->
+      <section class="plans">
+        <h2>📶 Planes disponibles</h2>
+        <div class="plan-grid">
+          <div class="plan">
+            <span class="plan-time">15 min</span>
+            <strong class="plan-price">$5</strong>
+          </div>
+          <div class="plan">
+            <span class="plan-time">1 hr</span>
+            <strong class="plan-price">$10</strong>
+          </div>
+          <div class="plan best">
+            <span class="badge">Más popular</span>
+            <span class="plan-time">4 hrs</span>
+            <strong class="plan-price">$20</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <footer class="contact">
+        <p>📲 WhatsApp <strong>5514464361</strong></p>
+        <p>Solicita tu ficha en <strong>Farmacia y Trámites RARME</strong></p>
+        <p class="note">Ficha de 15 min gratis con cualquier compra · Los mejores precios</p>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- SCRIPT DE LOGIN -->
+  <script src="js/md5.js"></script>
+  <script>
+    function doLogin() {
+      var dst = "https://captive.mikrotik.run";
+      var pin = document.getElementById("pin").value.trim();
+
+      if (pin === "") {
+        document.getElementById("pin").focus();
+        return false;
+      }
+
+      document.getElementById("dst-input").value = dst;
+
+      document.login.username.value = pin;
+      document.login.password.value = pin;
+
+      document.sendin.username.value = pin;
+      document.sendin.password.value = hexMD5("$(chap-id)" + pin + "$(chap-challenge)");
+      document.sendin.submit();
+
+      return false;
+    }
+  </script>
+
+  <!-- FORMULARIO OCULTO -->
+  <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+    <input type="hidden" name="username" />
+    <input type="hidden" name="password" />
+    <input type="hidden" name="dst" value="https://captive.mikrotik.run" />
+    <input type="hidden" name="popup" value="true" />
+  </form>
+</body>
+</html>

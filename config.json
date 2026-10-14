@@ -1,0 +1,149 @@
+{
+  "metadata": {
+    "empresaDesarrolladora": "RARME",
+    "producto": "RARME Voucher Generator",
+    "autor": "CyberPunk",
+    "version": "1.0.0",
+
+    "visible": {
+      "mostrarEmpresaDesarrolladora": true,
+      "mostrarAutor": false,
+      "mostrarVersion": true
+    }
+  },
+
+"empresa": {
+    "id": 1,
+    "nombre": "Farmacia y Trámites RARME",
+    "whatsapp": "5514464361",
+    "portal": "http://192.168.10.1/login",
+    "nombreRed": "Renta-WIFI-RARME",
+    "logo": "logo.png",
+    "activo": true
+},
+
+  "configuracion": {
+
+    "credenciales": {
+      "usuarioIgualPassword": true,
+      "longitud": 4,
+      "tipoCaracteres": "NUM",
+      "prefijoUsuario": "",
+      "prefijoPassword": ""
+    },
+
+    "generacion": {
+      "cantidadDefault": 10,
+      "generarQR": true,
+      "generarScriptMikrotik": true
+    },
+
+    "impresion": {
+      "formato": "CARTA",
+      "ticketsPorHoja": 30,
+      "columnas": 3,
+      "filas": 10,
+      "mostrarLogo": true,
+      "mostrarQR": true,
+      "mostrarPrecio": true,
+      "mostrarWhatsApp": true
+    }
+  },
+
+  "catalogos": {
+
+    "monedas": [
+      {
+        "id": 1,
+        "codigo": "MXN",
+        "nombre": "Peso Mexicano",
+        "simbolo": "$",
+        "activo": true
+      }
+    ],
+
+    "tiposCaracteres": [
+      {
+        "id": 1,
+        "codigo": "NUM",
+        "nombre": "Solo Numeros",
+        "activo": true
+      },
+      {
+        "id": 2,
+        "codigo": "ALF",
+        "nombre": "Solo Letras",
+        "activo": true
+      },
+      {
+        "id": 3,
+        "codigo": "MIX",
+        "nombre": "Alfanumerico",
+        "activo": true
+      }
+    ],
+
+    "plantillas": [
+      {
+        "id": 1,
+        "codigo": "CARTA",
+        "nombre": "Hoja Carta",
+        "activo": true
+      },
+      {
+        "id": 2,
+        "codigo": "TERMICA58",
+        "nombre": "Ticket Termico 58mm",
+        "activo": true
+      },
+      {
+        "id": 3,
+        "codigo": "TERMICA80",
+        "nombre": "Ticket Termico 80mm",
+        "activo": true
+      }
+    ],
+
+    "perfilesVenta": [
+      {
+        "id": 1,
+        "codigo": "15MIN",
+        "nombre": "15 Min",
+        "precio": 5,
+        "moneda": "MXN",
+        "duracion": "00:15:00",
+        "velocidad": "5M/5M",
+        "perfilMikrotik": "15MIN",
+        "color": "#22C55E",
+        "recomendado": false,
+        "activo": true
+      },
+      {
+        "id": 2,
+        "codigo": "60MIN",
+        "nombre": "1 Hora",
+        "precio": 10,
+        "moneda": "MXN",
+        "duracion": "01:00:00",
+        "velocidad": "8M/8M",
+        "perfilMikrotik": "60MIN",
+        "color": "#3B82F6",
+        "recomendado": false,
+        "activo": true
+      },
+      {
+        "id": 3,
+        "codigo": "240MIN",
+        "nombre": "4 Horas",
+        "precio": 20,
+        "moneda": "MXN",
+        "duracion": "04:00:00",
+        "velocidad": "10M/10M",
+        "perfilMikrotik": "240MIN",
+        "color": "#F59E0B",
+        "recomendado": true,
+        "activo": true
+      }
+    ]
+  }
+}

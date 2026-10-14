@@ -1,0 +1,16 @@
+internal-error = internal error ($(error-orig))
+config-error = configuration error ($(error-orig))
+not-logged-in = you are not logged in (ip $(ip))
+ippool-empty = cannot assign ip address - no more free addresses from pool
+shutting-down = hotspot service is shutting down
+user-session-limit = no more sessions are allowed for user $(username)
+license-session-limit = session limit reached ($(error-orig))
+wrong-mac-username = invalid username ($(username)): this MAC address is not yours
+chap-missing = web browser did not send challenge response (try again, enable JavaScript)
+invalid-username = invalid username or password
+invalid-mac = user $(username) is not allowed to log in from this MAC address
+uptime-limit = user $(username) has reached uptime limit
+traffic-limit = user $(username) has reached traffic limit
+radius-timeout = RADIUS server is not responding
+auth-in-progress = already authorizing, retry later
+radius-reply = $(error-orig)
